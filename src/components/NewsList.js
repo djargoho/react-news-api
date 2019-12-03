@@ -22,11 +22,12 @@ const NewsList = () => {
 
   useEffect(() => {
     //async를 사용하는 함수 따로 선언
+    console.log(process.env);
     const fetchData = async () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          'https://newsapi.org/v2/top-headlines?country=kr&apiKey=084c3f807c5c460ea07bda98e5a0b7c8',
+          `https://newsapi.org/v2/top-headlines?country=kr&apiKey=${process.env.REACT_APP_NEWS_APIKEY}`,
         );
 
         setArticles(response.data.articles);
